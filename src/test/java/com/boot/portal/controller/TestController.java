@@ -153,7 +153,7 @@ public class TestController extends PortalApplicationTests {
         userService.saveOrUpdate(u);
     }
     /**
-     * jpa分页测试相关啊
+     * jpa分页测试相关
      * 参考文档：http://www.codeweblog.com/%E5%85%A5%E9%97%A8%E5%B8%96-%E4%BD%BF%E7%94%A8-spring-data-jpa-%E7%AE%80%E5%8C%96-jpa-%E5%BC%80%E5%8F%91/
      * @throws Exception
      */
