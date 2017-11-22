@@ -12,7 +12,7 @@ import java.util.List;
  * @author xbwu
  * @create 2017-09-23 
  **/
-public class Page<T> {
+public class Pages<T> {
     //-- 公共变量 --//
     public static final String ASC = "asc";
     public static final String DESC = "desc";
@@ -29,13 +29,13 @@ public class Page<T> {
     protected List<T> result ;
     protected long totalCount = -1;
 
-    public Page() {
+    public Pages() {
     }
-    public Page(int pageNo,int pageSize) {
+    public Pages(int pageNo, int pageSize) {
         this.pageNo=pageNo;
         this.pageSize = pageSize;
     }
-    public Page(int pageSize) {
+    public Pages(int pageSize) {
         this.pageSize = pageSize;
     }
     /**
@@ -56,7 +56,7 @@ public class Page<T> {
         }
     }
 
-    public Page<T> pageNo(final int thePageNo) {
+    public Pages<T> pageNo(final int thePageNo) {
         setPageNo(thePageNo);
         return this;
     }
@@ -79,7 +79,7 @@ public class Page<T> {
         }
     }
 
-    public Page<T> pageSize(final int thePageSize) {
+    public Pages<T> pageSize(final int thePageSize) {
         setPageSize(thePageSize);
         return this;
     }
@@ -105,7 +105,7 @@ public class Page<T> {
         this.orderBy = orderBy;
     }
 
-    public Page<T> orderBy(final String theOrderBy) {
+    public Pages<T> orderBy(final String theOrderBy) {
         setOrderBy(theOrderBy);
         return this;
     }
@@ -136,7 +136,7 @@ public class Page<T> {
         this.order = StringUtils.lowerCase(order);
     }
 
-    public Page<T> order(final String theOrder) {
+    public Pages<T> order(final String theOrder) {
         setOrder(theOrder);
         return this;
     }
@@ -162,7 +162,7 @@ public class Page<T> {
         this.autoCount = autoCount;
     }
 
-    public Page<T> autoCount(final boolean theAutoCount) {
+    public Pages<T> autoCount(final boolean theAutoCount) {
         setAutoCount(theAutoCount);
         return this;
     }

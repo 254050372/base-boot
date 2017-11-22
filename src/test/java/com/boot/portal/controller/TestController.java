@@ -6,11 +6,12 @@ package com.boot.portal.controller;/**
 import com.alibaba.fastjson.JSON;
 import com.boot.portal.PortalApplicationTests;
 import com.boot.portal.common.base.JdbcQueryBuilder;
-import com.boot.portal.common.base.Page;
+import com.boot.portal.common.base.Pages;
 import com.boot.portal.common.base.ResultWapper;
 import com.boot.portal.common.util.JaxbXMLUtil;
 import com.boot.portal.common.util.MD5Util;
 import com.boot.portal.common.util.UUIDGeneratorUtil;
+import com.boot.portal.dao.user.UserMapper;
 import com.boot.portal.entity.portal.user.User;
 import com.boot.portal.entity.portal.user.UserInfo;
 import com.boot.portal.service.user.UserInfoService;
@@ -18,6 +19,8 @@ import com.boot.portal.service.user.UserService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
@@ -47,6 +50,8 @@ public class TestController extends PortalApplicationTests {
     JdbcTemplate hrJDBC;
     @Autowired
     UserService userService;
+    @Autowired
+    UserMapper userMapper;
     @Autowired
     UserInfoService userInfoService;
     @Test
@@ -114,13 +119,13 @@ public class TestController extends PortalApplicationTests {
     @Test
     public void testJDBCPage() throws Exception {
         JdbcQueryBuilder pb=new JdbcQueryBuilder(localJDBC);
-        Page page=new Page();
+        Pages page=new Pages();
         List<Map<String, Object>> list=pb.queryPage("select *from user order by id",page);
         System.out.println(Arrays.asList(list).toString()+" ,总条数："+page.getTotalCount()+",总页数："+page.getTotalPages()+
             ",是否存在下一页："+page.isHasNext()+",是否存在上一页："+page.isHasPre());
 
         JdbcQueryBuilder pb1=new JdbcQueryBuilder(localJDBC);
-        Page page1=new Page(1,2);
+        Pages page1=new Pages(1,2);
         List<Map<String, Object>> list1=pb1.queryPage("select *from user order by id",page1);
         System.out.println(Arrays.asList(list1).toString()+" ,总条数："+page1.getTotalCount()+",总页数："+page1.getTotalPages()+
                 ",是否存在下一页："+page1.isHasNext()+",是否存在上一页："+page1.isHasPre());
@@ -139,11 +144,25 @@ public class TestController extends PortalApplicationTests {
     @Test
     //禁止回滚
     @Rollback(value = false)
-    public void testJPA() throws Exception {
+    public void testJPAUpdate() throws Exception {
         //完整对象查询测试，修改关联对象值
         User u= userService.getOne(46L);
         System.out.println("旧email:"+u.getUserInfo().getEmail());
-        u.getUserInfo().setEmail("aaaa:"+u.getUserInfo().getEmail());
-        userService.saveOrUpdate(u);//userInfo的值成功被更新！
+        u.getUserInfo().setEmail("dd:"+u.getUserInfo().getEmail());
+        //userInfo的值成功被更新！
+        userService.saveOrUpdate(u);
+    }
+    /**
+     * jpa分页测试相关
+     * @throws Exception
+     */
+    @Test
+    public void testJPAPageQuery() throws Exception {
+        int pageNum=1;
+        int pageSize=1;
+        //jpa对象分页查询,page从0开始第一页
+        PageRequest pr=PageRequest.of(pageNum-1,pageSize,null);
+        Page<User> page= userMapper.findByUserAccount("254050372",pr);
+        System.out.println(page.getContent());
     }
 }

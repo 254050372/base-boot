@@ -46,7 +46,7 @@ public class JdbcQueryBuilder {
      *            分页类
      * @return 返回 List<Map<String, Object>>
      */
-    public List<Map<String, Object>> queryPage(String sql,Page page,Object[] args) throws Exception{
+    public List<Map<String, Object>> queryPage(String sql, Pages page, Object[] args) throws Exception{
         if (page.getStartRow() <= 0 && page.getEndRow() <= 0) {
             return jdbcTemplate.queryForList(sql,
                     args);
@@ -68,7 +68,7 @@ public class JdbcQueryBuilder {
      *            分页对象
      * @return  返回 List<Map<String, Object>>
      */
-    public List<Map<String, Object>> queryPage(String sql,Page page) throws Exception{
+    public List<Map<String, Object>> queryPage(String sql,Pages page) throws Exception{
         return this.queryPage(sql, page,new Object[] {});
     }
     /**
@@ -82,7 +82,7 @@ public class JdbcQueryBuilder {
      *            返回对象类型
      * @return  返回 List<T>
      */
-    public <T> List<T> queryPage(String sql,Page page,Class<T> c) throws Exception{
+    public <T> List<T> queryPage(String sql, Pages page, Class<T> c) throws Exception{
         return this.queryPage(sql,page,new Object[]{},c);
     }
 
@@ -120,7 +120,7 @@ public class JdbcQueryBuilder {
     }
 
     /**
-     * 查询单挑对象返回
+     * 查询单独对象返回
      * @param sql
      * @param c
      * @param <T>
@@ -149,7 +149,7 @@ public class JdbcQueryBuilder {
      *            返回对象类型
      * @return
      */
-    public <T> List<T> queryPage(String sql,Page page,Object[] args,Class<T> c) throws Exception {
+    public <T> List<T> queryPage(String sql, Pages page, Object[] args, Class<T> c) throws Exception {
         if (page.getStartRow() <= 0 && page.getEndRow() <= 0) {
             return jdbcTemplate.query(sql, new BeanPropertyRowMapper(c));
         }
@@ -223,10 +223,10 @@ public class JdbcQueryBuilder {
 
     private class PageParmBuilder {
         private String sql;
-        private Page page;
+        private Pages page;
         private Object[] args;
 
-        public PageParmBuilder(String sql, Page page, Object... args) {
+        public PageParmBuilder(String sql, Pages page, Object... args) {
             this.sql = sql;
             this.page = page;
             this.args = args;

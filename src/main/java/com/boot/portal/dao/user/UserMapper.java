@@ -5,6 +5,10 @@ package com.boot.portal.dao.user;/**
 
 import com.boot.portal.dao.base.BaseRepository;
 import com.boot.portal.entity.portal.user.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 
@@ -16,34 +20,15 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserMapper extends BaseRepository<User,Long> {
 
-
-    /*@Select("SELECT * FROM t_user WHERE id = #{id}")
-    @Results({
-            @Result(property = "id",  column = "id"),
-            @Result(property = "account",  column = "account"),
-            @Result(property = "password",  column = "password"),
-            @Result(property = "valid", column = "valid")
-    })
-    User getOne(BigInteger id);
-
-    @Insert("INSERT INTO t_user(account,passWord,valid) VALUES(#{account}, #{passWord}, #{valid})")
-    void insert(User user);
-
-    @Update("UPDATE t_user SET account=#{account},passWord=#{passWord},valid=#{valid}  WHERE id =#{id}")
-    void update(User user);
-
-    @Delete("DELETE FROM t_user WHERE id =#{id}")
-    void delete(Long id);
-
-    @Select("SELECT * FROM t_user WHERE account = #{params.name}")
-    @Results({
-            @Result(property = "id",  column = "id"),
-            @Result(property = "account",  column = "account"),
-            @Result(property = "password",  column = "password"),
-            @Result(property = "valid", column = "valid")
-    })
-    List<User> getListByName(Map<String,Object> params);
-
-    User getUser(BigInteger id);*/
+    /**
+     * 根据账号分页查询
+     * 默认使用hibernate 的hql写法，可以在注解@Query中指定使用sql语句解析，nativeQuery=true
+     * @param account
+     * @param pageable
+     * @return
+     */
+    @Query("select a from User a where a.account=:account")
+    Page<User> findByUserAccount(
+            @Param("account")String account, Pageable pageable);
 
 }
