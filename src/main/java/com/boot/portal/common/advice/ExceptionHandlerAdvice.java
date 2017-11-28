@@ -3,6 +3,7 @@ package com.boot.portal.common.advice;/**
  * @autor xbwu on 2017/8/18.
  */
 
+import com.boot.portal.common.enums.VersionEnum;
 import com.boot.portal.common.exceptions.AJAXServerException;
 import com.boot.portal.common.base.ResultWapper;
 import com.boot.portal.common.exceptions.AJAXParamException;
@@ -35,7 +36,7 @@ public class ExceptionHandlerAdvice {
         String header=request.getHeader("x-requested-with");
         logger.error("程序异常",e);
         if(StringUtils.isBlank(header)){//判断是否ajax请求，不是则跳转页面，是则返回标准封装结果
-            return new ModelAndView("error/404");
+            return new ModelAndView(VersionEnum.getCurrentVersion()+"/common/error/404");
         }else{
             return ResultWapper.error(e.getMessage());
         }

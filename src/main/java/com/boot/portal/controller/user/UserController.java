@@ -3,7 +3,9 @@ package com.boot.portal.controller.user;/**
  * @autor xbwu on 2017/8/9.
  */
 
+import com.boot.portal.common.enums.VersionEnum;
 import com.boot.portal.common.util.JaxbXMLUtil;
+import com.boot.portal.controller.common.BaseController;
 import com.boot.portal.entity.portal.user.User;
 import com.boot.portal.entity.portal.user.UserInfo;
 import com.boot.portal.service.user.UserInfoService;
@@ -13,6 +15,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -27,7 +30,8 @@ import java.util.Map;
  * @create 2017-08-09 
  **/
 @RestController
-public class UserController {
+@RequestMapping("/user")
+public class UserController extends BaseController{
 
     @Autowired
     @Qualifier("localJdbcTemplate")
@@ -40,6 +44,14 @@ public class UserController {
     UserService userService;
     @Autowired
     UserInfoService userInfoService;
+
+    @RequestMapping("/index")
+    public ModelAndView index(HttpServletRequest request) throws Exception{
+        User ue=userService.getOne(46L);
+        ModelAndView mv = getMV("common/user/index");
+        mv.addObject("ue",ue);
+        return mv;
+    }
 
     @RequestMapping("/test1")
     public String test1(){
@@ -54,15 +66,6 @@ public class UserController {
     }
 
 
-    @RequestMapping("/index")
-    public ModelAndView index(Model model,HttpServletRequest request) throws  Exception{
-        User ue=userService.getOne(25019377879351296L);
-        ModelAndView mv = new ModelAndView("user/index"); //返回的view就是templetes下面文件的名称
-        model.addAttribute("ue",ue);
-        if(1==1)
-        throw new Exception("手动异常");
-        return mv;
-    }
 
     @RequestMapping("/testExceptionCatch")
     public ModelAndView testExceptionCatch(Model model,HttpServletRequest request) throws  Exception{

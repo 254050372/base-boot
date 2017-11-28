@@ -2,7 +2,7 @@
 <html lang="zh">
 
 <body>
-Something wrong: ${ue1.account},welcome!
+Something wrong: ${ue.account},welcome!
 </body>
 
 </html>
