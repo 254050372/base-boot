@@ -1,11 +1,11 @@
 <!-- Main Header -->
 <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="${basePath}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>A</b>LT</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Admin</b>LTE</span>
+        <span class="logo-lg"><b>SBS</b>中间件平台</span>
     </a>
 
     <!-- Header Navbar -->
@@ -25,7 +25,7 @@
                         <span class="label label-success">4</span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">You have 4 messages</li>
+                        <li class="header">你有4条未读消息</li>
                         <li>
                             <!-- inner menu: contains the messages -->
                             <ul class="menu">
@@ -37,18 +37,18 @@
                                         </div>
                                         <!-- Message title and timestamp -->
                                         <h4>
-                                            Support Team
-                                            <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                            管理员
+                                            <small><i class="fa fa-clock-o"></i> 5 分钟前</small>
                                         </h4>
                                         <!-- The message -->
-                                        <p>Why not buy a new awesome theme?</p>
+                                        <p>功能持续完善中~</p>
                                     </a>
                                 </li>
                                 <!-- end message -->
                             </ul>
                             <!-- /.menu -->
                         </li>
-                        <li class="footer"><a href="#">See All Messages</a></li>
+                        <li class="footer"><a href="#">查看所有</a></li>
                     </ul>
                 </li>
                 <!-- /.messages-menu -->
@@ -61,19 +61,19 @@
                         <span class="label label-warning">10</span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">You have 10 notifications</li>
+                        <li class="header">你有10条未读通知</li>
                         <li>
                             <!-- Inner Menu: contains the notifications -->
                             <ul class="menu">
                                 <li><!-- start notification -->
                                     <a href="#">
-                                        <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                                        <i class="fa fa-users text-aqua"></i> 有5个新成员加入
                                     </a>
                                 </li>
                                 <!-- end notification -->
                             </ul>
                         </li>
-                        <li class="footer"><a href="#">View all</a></li>
+                        <li class="footer"><a href="#">查看所有</a></li>
                     </ul>
                 </li>
                 <!-- Tasks Menu -->
@@ -84,7 +84,7 @@
                         <span class="label label-danger">9</span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">You have 9 tasks</li>
+                        <li class="header">你有9个任务</li>
                         <li>
                             <!-- Inner menu: contains the tasks -->
                             <ul class="menu">
@@ -92,7 +92,7 @@
                                     <a href="#">
                                         <!-- Task title and progress text -->
                                         <h3>
-                                            Design some buttons
+                                            平台开发进度
                                             <small class="pull-right">20%</small>
                                         </h3>
                                         <!-- The progress bar -->
@@ -100,7 +100,7 @@
                                             <!-- Change the css width attribute to simulate progress -->
                                             <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar"
                                                  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                <span class="sr-only">20% Complete</span>
+                                                <span class="sr-only">已完成20%</span>
                                             </div>
                                         </div>
                                     </a>
@@ -109,7 +109,7 @@
                             </ul>
                         </li>
                         <li class="footer">
-                            <a href="#">View all tasks</a>
+                            <a href="#">查看所有</a>
                         </li>
                     </ul>
                 </li>
@@ -120,7 +120,7 @@
                         <!-- The user image in the navbar-->
                         <img src="${basePath}/adminLTE/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                        <span class="hidden-xs">Alexander Pierce</span>
+                        <span class="hidden-xs">系统管理员</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
@@ -128,21 +128,21 @@
                             <img src="${basePath}/adminLTE/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                             <p>
-                                Alexander Pierce - Web Developer
-                                <small>Member since Nov. 2012</small>
+                                系统管理员 - Web Developer
+                                <#--<small>Member since Nov. 2012</small>-->
                             </p>
                         </li>
                         <!-- Menu Body -->
                         <li class="user-body">
                             <div class="row">
                                 <div class="col-xs-4 text-center">
-                                    <a href="#">Followers</a>
+                                    <a href="#">粉丝</a>
                                 </div>
                                 <div class="col-xs-4 text-center">
-                                    <a href="#">Sales</a>
+                                    <a href="#">天气</a>
                                 </div>
                                 <div class="col-xs-4 text-center">
-                                    <a href="#">Friends</a>
+                                    <a href="#">朋友</a>
                                 </div>
                             </div>
                             <!-- /.row -->
@@ -150,18 +150,18 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                <a href="#" class="btn btn-default btn-flat">个人配置</a>
                             </div>
                             <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                <a href="#" class="btn btn-default btn-flat">登出</a>
                             </div>
                         </li>
                     </ul>
                 </li>
                 <!-- Control Sidebar Toggle Button -->
-                <li>
+                <#--<li>
                     <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                </li>
+                </li>-->
             </ul>
         </div>
     </nav>

@@ -15,7 +15,7 @@ import javax.persistence.Table;
  **/
 @Entity
 //指定表名
-@Table(name = "user_info")
+@Table(name = "t_user_info")
 public class UserInfo extends BaseEntity {
 
     private String email;

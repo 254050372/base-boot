@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 //JPA固定标签
 @Entity
 //指定表名
-@Table(name = "user",
+@Table(name = "t_user",
         //添加索引
         indexes = {
                 //索引名称，索引对应列名

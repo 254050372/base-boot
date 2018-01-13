@@ -29,10 +29,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- REQUIRED JS SCRIPTS -->
 
+    <!-- jQuery 3 -->
+    <script src="${basePath}/adminLTE/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="${basePath}/adminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="${basePath}/adminLTE/dist/js/adminlte.min.js"></script>
     <!-- Google Font -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <#--动态标签页-->
+    <script src="${basePath}/js/closable-tab-div.js"></script>
+
 </head>
 <!--
 BODY TAG OPTIONS:

@@ -58,11 +58,11 @@ public class PortalJPAConfig {
         jpaProperties.put("hibernate.jdbc.batch_size",50);
         //自动建表语句
         jpaProperties.put("hibernate.hbm2ddl.auto", "update");
-        //数据库方言设置，不设置的话跟druid的密码加密功能会冲突
-        jpaProperties.put("hibernate.dialect","org.hibernate.dialect.MySQL5Dialect");
 
-        //验证数据库表字段跟实体是否一致，不一致则报错
-        //jpaProperties.put("hibernate.hbm2ddl.auto", "validate");
+        //数据库方言设置，不设置的话跟druid的密码加密功能会冲突
+        jpaProperties.put("hibernate.dialect","org.hibernate.dialect.MySQL5InnoDBDialect");
+
+
 
         factory.setJpaPropertyMap(jpaProperties);
         factory.afterPropertiesSet();
