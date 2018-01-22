@@ -1,4 +1,4 @@
-package com.boot.portal.controller.common;/**
+package com.boot.portal.controller.base;/**
  * @description
  * @autor xbwu on 2017/8/17.
  */
@@ -19,5 +19,12 @@ public abstract class BaseController {
 
     public ModelAndView getMV(String viewName){
         return new ModelAndView(VersionEnum.getCurrentVersion()+"/"+viewName); //返回的view就是templetes下面文件的名称
+    }
+
+    public ModelAndView forwardController(String viewName){
+        return new ModelAndView("forward:/"+viewName);
+    }
+    public ModelAndView redirectController(String viewName){
+        return new ModelAndView("redirect:/"+viewName);
     }
 }

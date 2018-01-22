@@ -4,6 +4,8 @@ package com.boot.portal.service.user;/**
  */
 
 import com.boot.portal.entity.portal.user.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 /**
  * 用户服务
@@ -12,4 +14,7 @@ import com.boot.portal.entity.portal.user.User;
  **/
 public interface UserService extends BaseJPAService<User>{
 
+    Page<User> findPageByUserAccount(String account, Pageable pageable);
+
+    User findByUserAccount(String account);
 }

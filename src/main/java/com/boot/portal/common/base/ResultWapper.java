@@ -5,6 +5,9 @@ package com.boot.portal.common.base;/**
 
 import com.boot.portal.common.enums.ResultEnum;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * ajax返回结果封装
  * @author xbwu
@@ -14,19 +17,25 @@ public class ResultWapper {
 
     private String msg;
 
-    private Object result;
+    private Map<String,Object> result=new HashMap<>();
 
     private ResultEnum resultType;
 
 
-    public static ResultWapper success(Object result){
+    public static ResultWapper success(Map<String,Object> result){
         ResultWapper rw=new ResultWapper();
         rw.setMsg("");
         rw.setResult(result);
         rw.setResultType(ResultEnum.SUCCESS);
         return rw;
     }
-    public static ResultWapper success(String msg,Object result){
+    public static ResultWapper success(String msg){
+        ResultWapper rw=new ResultWapper();
+        rw.setMsg(msg);
+        rw.setResultType(ResultEnum.SUCCESS);
+        return rw;
+    }
+    public static ResultWapper success(String msg,Map<String,Object> result){
         ResultWapper rw=new ResultWapper();
         rw.setMsg(msg);
         rw.setResult(result);
@@ -39,7 +48,7 @@ public class ResultWapper {
         rw.setResultType(ResultEnum.ERROR);
         return rw;
     }
-    public static ResultWapper warn(String msg,Object result){
+    public static ResultWapper warn(String msg,Map<String,Object> result){
         ResultWapper rw=new ResultWapper();
         rw.setMsg(msg);
         rw.setResult(result);
@@ -58,7 +67,7 @@ public class ResultWapper {
         return result;
     }
 
-    public void setResult(Object result) {
+    private void setResult(Map<String,Object> result) {
         this.result = result;
     }
 
@@ -68,5 +77,10 @@ public class ResultWapper {
 
     public void setResultType(ResultEnum resultType) {
         this.resultType = resultType;
+    }
+
+    public ResultWapper addResult(String key,Object value){
+        result.put(key,value);
+        return this;
     }
 }

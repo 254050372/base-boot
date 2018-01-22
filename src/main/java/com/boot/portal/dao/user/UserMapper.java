@@ -11,6 +11,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 /**
  * 用户
@@ -28,7 +30,10 @@ public interface UserMapper extends BaseRepository<User,Long> {
      * @return
      */
     @Query("select a from User a where a.account=:account")
-    Page<User> findByUserAccount(
+    Page<User> findPageByUserAccount(
             @Param("account")String account, Pageable pageable);
 
+    @Query("select a from User a where a.account=:account")
+    List<User> findByUserAccount(
+            @Param("account")String account);
 }

@@ -1,9 +1,8 @@
-package com.boot.portal.controller.common;/**
+package com.boot.portal.controller.base;/**
  * @description
  * @autor xbwu on 2017/11/28.
  */
 
-import com.boot.portal.entity.portal.user.User;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +19,12 @@ import javax.servlet.http.HttpServletRequest;
 public class IndexController extends BaseController {
 
     @RequestMapping("/")
-    @ResponseBody
+    public ModelAndView login(HttpServletRequest request) throws Exception{
+        ModelAndView mv = getMV("login");
+        return mv;
+    }
+
+    @RequestMapping("/index")
     public ModelAndView index(HttpServletRequest request) throws Exception{
         ModelAndView mv = getMV("index");
         return mv;

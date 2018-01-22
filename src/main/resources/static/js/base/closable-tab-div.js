@@ -3,7 +3,6 @@ var closableTab = {
 	
     //添加tab
 	addTab:function(tabItem){ //tabItem = {id,name,url,closable}
-
 		var id = "tab_seed_" + tabItem.id;
 		var container ="tab_container_" + tabItem.id;
 
@@ -17,18 +16,20 @@ var closableTab = {
 			}else{
 				li_tab = li_tab + '</a></li>';
 			}
-		
 		 	var tabpanel = '<div role="tabpanel" class="tab-pane" id="'+container+'" style="width: 100%;">'+
-	    					  '正在加载...'+
+	    					   '<img src="img/other/loading.gif" width="600" height="500" style="\n' +
+								'    margin: 0 auto;\n' +
+								'    display:block;\n' +
+								'">'+
 	    				   '</div>';
-
-
+			$('.box .overlay').show();
 			$('.nav-tabs').append(li_tab);
 			$('.tab-content').append(tabpanel);
 			$('#'+container).load(tabItem.url,function(response,status,xhr){
 				if(status=='error'){//status的值为success和error，如果error则显示一个错误页面
 					$(this).html(response);
 				}
+                $('.box .overlay').hide();
 			});
 		}
 		$("#"+id).addClass("active");
@@ -37,7 +38,6 @@ var closableTab = {
 
 	//关闭tab
 	closeTab:function(item){
-		debugger;
 		var val = $(item).attr('tabclose');
 		var containerId = "tab_container_"+val.substring(9);
    	    
@@ -45,8 +45,6 @@ var closableTab = {
    	    	$('#'+val).prev().addClass('active');
    	    	$('#'+containerId).prev().addClass('active');
    	    }
-
-
 		$("#"+val).remove();
 		$("#"+containerId).remove();
 	}

@@ -120,7 +120,7 @@
                         <!-- The user image in the navbar-->
                         <img src="${basePath}/adminLTE/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                        <span class="hidden-xs">系统管理员</span>
+                        <span class="hidden-xs">${user.username!}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->

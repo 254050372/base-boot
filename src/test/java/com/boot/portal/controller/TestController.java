@@ -90,7 +90,7 @@ public class TestController extends PortalApplicationTests {
     @Test
     public void testAJAXJSON(){
         List<Map<String,Object>> list = localJDBC.queryForList("select * from t_user");
-        System.out.println(JSON.toJSONString(ResultWapper.success(list)));
+        System.out.println(JSON.toJSONString(ResultWapper.success("").addResult("list",list)));
     }
     @Test
     //禁止回滚
@@ -102,8 +102,8 @@ public class TestController extends PortalApplicationTests {
         ui.setEmail("254050372@qq.com");
         ui.setSex(1);
         us.setUserInfo(ui);
-        us.setAccount("wuxb");
-        us.setPassword("123");
+        us.setAccount("chixinzei");
+        us.setPassword(MD5Util.getMD5("1234qwer"));
         us.setValid(true);
         userInfoService.saveOrUpdate(ui);
         userService.saveOrUpdate(us);
@@ -163,7 +163,7 @@ public class TestController extends PortalApplicationTests {
         int pageSize=1;
         //jpa对象分页查询,page从0开始第一页
         PageRequest pr=PageRequest.of(pageNum-1,pageSize,null);
-        Page<User> page= userMapper.findByUserAccount("254050372",pr);
+        Page<User> page= userMapper.findPageByUserAccount("254050372",pr);
         System.out.println(page.getContent());
     }
 }
