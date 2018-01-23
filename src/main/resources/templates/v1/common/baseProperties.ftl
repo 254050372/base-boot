@@ -10,7 +10,10 @@
 
 <!-- jQuery 3 -->
 <script src="${basePath}/adminLTE/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="https://cdn.bootcss.com/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+<#--<script src="https://cdn.bootcss.com/jquery-validate/1.17.0/jquery.validate.min.js"></script>-->
+<#--jquery 验证-->
+<script src="${basePath}/js/base/jquery.validate.min.js"></script>
+
 <!-- Bootstrap 3.3.7 -->
 <script src="${basePath}/adminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
@@ -31,9 +34,18 @@
 <link rel="stylesheet" href="${basePath}/adminLTE/dist/css/skins/skin-blue.min.css">
 <#--动态标签页-->
 <script src="${basePath}/js/base/closable-tab-div.js"></script>
-<script src="https://cdn.bootcss.com/toastr.js/2.1.4/toastr.min.js"></script>
-<link href="https://cdn.bootcss.com/toastr.js/2.1.4/toastr.min.css" rel="stylesheet">
-<script src="https://cdn.bootcss.com/vue/2.5.13/vue.min.js"></script>
+<#--<script src="https://cdn.bootcss.com/toastr.js/2.1.4/toastr.min.js"></script>-->
+<script src="${basePath}/js/base/toastr.min.js"></script>
+<#--<link href="https://cdn.bootcss.com/toastr.js/2.1.4/toastr.min.css" rel="stylesheet">-->
+<link href="${basePath}/css/base/toastr.min.css" rel="stylesheet">
+<#--<script src="https://cdn.bootcss.com/vue/2.5.13/vue.min.js"></script>-->
+<script src="${basePath}/js/base/vue.min.js"></script>
+
+<#--ladda按钮加载样式，api：http://www.htmleaf.com/jQuery/Buttons-Icons/201506232089.html-->
+<link rel="stylesheet" href="${basePath}/css/base/ladda-themeless.min.css">
+<script src="${basePath}/js/base/spin.min.js"></script>
+<script src="${basePath}/js/base/ladda.min.js"></script>
+
 <#--自定义js-->
 <script src="${basePath}/js/base/main.js"></script>
 <script src="${basePath}/js/validate/validate_local.js"></script>

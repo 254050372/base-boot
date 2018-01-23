@@ -9,15 +9,20 @@ import com.boot.portal.common.util.MD5Util;
 import com.boot.portal.entity.portal.user.User;
 import com.boot.portal.service.user.UserService;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.MessageSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 /**
  * 登录
@@ -30,7 +35,11 @@ public class LoginController extends BaseController{
     @Autowired
     @Qualifier("localJdbcTemplate")
     JdbcTemplate jdbcTemplate1;
-
+    /**
+     * 国际化消息
+     */
+    @Autowired
+    private MessageSource messageSource;
     @Autowired
     UserService userService;
 
@@ -40,10 +49,11 @@ public class LoginController extends BaseController{
         return mv;
     }
     @PostMapping(value = "/login")
+    @Valid
     public ResultWapper login(Model model,
-                              @RequestParam("username") String username,
-                              @RequestParam("password") String password,
-                              HttpServletRequest request) throws Exception {
+                              @ModelAttribute@NotBlank@Length(min = 2,max = 10) String username,
+                              @ModelAttribute@NotBlank@Length(min = 1,max = 8)String password,
+                              HttpServletRequest request, BindingResult result) throws Exception {
         User ue = userService.findByUserAccount(username.trim());
         ResultWapper rw = null;
         do {

@@ -42,10 +42,7 @@ public class RSAKeysUtil {
         }*/
         //根据私钥加密数据库密码
         //密码明文，也就是数据库的密码
-        String plainText = "efgptest";
-        //druid加密密码
-        System.out.println(ConfigTools.encrypt(plainText));
-        plainText = "hr20110323";
+        String plainText = "sbs123";
         //druid加密密码
         System.out.println(ConfigTools.encrypt(plainText));
     }
