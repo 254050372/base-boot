@@ -33,6 +33,10 @@ public class JdbcQueryBuilder {
 
     private JdbcTemplate jdbcTemplate;
 
+    public JdbcTemplate getJdbcTemplate() {
+        return jdbcTemplate;
+    }
+
     public JdbcQueryBuilder(JdbcTemplate jdbcTemplate){
         this.jdbcTemplate=jdbcTemplate;
     }
