@@ -5,6 +5,7 @@ package com.boot.portal.controller;/**
 
 import com.alibaba.fastjson.JSON;
 import com.boot.portal.PortalApplicationTests;
+
 import com.boot.portal.common.base.JdbcQueryBuilder;
 import com.boot.portal.common.base.Pages;
 import com.boot.portal.common.base.ResultWapper;
@@ -54,6 +55,15 @@ public class TestController extends PortalApplicationTests {
     UserMapper userMapper;
     @Autowired
     UserInfoService userInfoService;
+
+    @Autowired
+    @Qualifier("mysqlJQB")
+    private JdbcQueryBuilder mysqlJQB;
+
+    @Autowired
+    @Qualifier("bpmJQB")
+    private JdbcQueryBuilder bpmJQB;
+
     @Test
     public void testLocal(){
         List<Map<String,Object>> list = localJDBC.queryForList("select * from t_user");
@@ -118,22 +128,24 @@ public class TestController extends PortalApplicationTests {
      */
     @Test
     public void testJDBCPage() throws Exception {
-        JdbcQueryBuilder pb=new JdbcQueryBuilder(localJDBC);
         Pages page=new Pages();
-        List<Map<String, Object>> list=pb.queryPage("select *from user order by id",page);
+        List<Map<String, Object>> list=mysqlJQB.queryPage("select *from t_user order by id",page);
         System.out.println(Arrays.asList(list).toString()+" ,总条数："+page.getTotalCount()+",总页数："+page.getTotalPages()+
             ",是否存在下一页："+page.isHasNext()+",是否存在上一页："+page.isHasPre());
 
-        JdbcQueryBuilder pb1=new JdbcQueryBuilder(localJDBC);
         Pages page1=new Pages(1,2);
-        List<Map<String, Object>> list1=pb1.queryPage("select *from user order by id",page1);
+        //返回map
+        List<Map<String, Object>> list1=bpmJQB.queryPage("select *from users order by id",page1);
         System.out.println(Arrays.asList(list1).toString()+" ,总条数："+page1.getTotalCount()+",总页数："+page1.getTotalPages()+
                 ",是否存在下一页："+page1.isHasNext()+",是否存在上一页："+page1.isHasPre());
         //返回单个对象
-        User ue=pb.queryOneByObject("select *from user where id=?",new Object[]{"21029377879351397"},User.class);
+        User ue=mysqlJQB.queryOneByObject("select *from t_user where id=?",new Object[]{"53"},User.class);
+        Map map=mysqlJQB.queryOneByMap("select *from t_user where id=?",new Object[]{"53"});
         System.out.println("ue:"+ue);
+        System.out.println("ue map:"+map);
+
         //返回对象list
-        List<User> users=pb.queryPage("select *from user order by id",page1,User.class);
+        List<User> users=mysqlJQB.queryPage("select *from t_user order by id",page1,User.class);
         System.out.println("users:"+users);
     }
 

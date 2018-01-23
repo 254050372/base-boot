@@ -3,6 +3,7 @@ package com.boot.portal.common.db;/**
  * @autor xbwu on 2017/8/9.
  */
 
+import com.boot.portal.common.base.JdbcQueryBuilder;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,6 +45,26 @@ public class JDBCTemplateConfig {
     @Bean(name = "hrJdbcTemplate")
     public JdbcTemplate hrJdbcTemplate(@Qualifier("hrDataSource")DataSource dataSource){
         return new JdbcTemplate(dataSource);
+    }
+
+    /**
+     * 注入mysql分页查询
+     * @param jdbcTemplate
+     * @return
+     */
+    @Bean(name="mysqlJQB")
+    public JdbcQueryBuilder mysqlJQB(@Qualifier("localJdbcTemplate")JdbcTemplate jdbcTemplate){
+        return new JdbcQueryBuilder(jdbcTemplate);
+    }
+
+    /**
+     * 注入oracle分页查询
+     * @param jdbcTemplate
+     * @return
+     */
+    @Bean(name="bpmJQB")
+    public JdbcQueryBuilder bpmJQB(@Qualifier("bpmJdbcTemplate") JdbcTemplate jdbcTemplate){
+        return new JdbcQueryBuilder(jdbcTemplate);
     }
 
 }

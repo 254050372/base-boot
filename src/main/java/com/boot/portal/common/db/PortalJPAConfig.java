@@ -41,7 +41,6 @@ public class PortalJPAConfig {
     @Qualifier("portalDataSource")
     private DataSource dataSource;
 
-
     @Bean
     @Primary
     public EntityManagerFactory entityManagerFactory() {
@@ -61,8 +60,6 @@ public class PortalJPAConfig {
 
         //数据库方言设置，不设置的话跟druid的密码加密功能会冲突
         jpaProperties.put("hibernate.dialect","org.hibernate.dialect.MySQL5InnoDBDialect");
-
-
 
         factory.setJpaPropertyMap(jpaProperties);
         factory.afterPropertiesSet();

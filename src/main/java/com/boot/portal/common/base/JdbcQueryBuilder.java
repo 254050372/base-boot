@@ -6,6 +6,7 @@ package com.boot.portal.common.base;/**
 import org.apache.commons.lang3.ArrayUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -31,6 +32,7 @@ public class JdbcQueryBuilder {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private JdbcTemplate jdbcTemplate;
+
     public JdbcQueryBuilder(JdbcTemplate jdbcTemplate){
         this.jdbcTemplate=jdbcTemplate;
     }
@@ -95,7 +97,7 @@ public class JdbcQueryBuilder {
      * @throws Exception
      */
     public <T> T queryOneByObject(String sql,Class<T> c) throws Exception{
-        return queryOneByObject(sql, c);
+        return queryOneByObject(sql, null,c);
     }
 
     /**
@@ -106,7 +108,13 @@ public class JdbcQueryBuilder {
      * @throws Exception
      */
     public Map<String,Object>  queryOneByMap(String sql,Object[] args) throws Exception{
-        return jdbcTemplate.queryForMap(sql, args);
+        try {
+            return jdbcTemplate.queryForMap(sql, args);
+        }catch(EmptyResultDataAccessException e){
+            return null;
+        }catch(Exception e){
+            throw e;
+        }
     }
 
     /**
@@ -116,7 +124,7 @@ public class JdbcQueryBuilder {
      * @throws Exception
      */
     public Map<String,Object>  queryOneByMap(String sql) throws Exception{
-        return this.queryOneByMap(sql, null);
+        return queryOneByMap(sql, null);
     }
 
     /**
@@ -136,7 +144,13 @@ public class JdbcQueryBuilder {
             }
         }
         logger.info("paging sql : \n" + sql);
-        return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(c));
+        try {
+            return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(c));
+        }catch(EmptyResultDataAccessException e){
+            return null;
+        }catch(Exception e){
+            throw e;
+        }
     }
     /**
      * 分页查询，带参数带转换器
