@@ -1,3 +1,4 @@
+<#import "/spring.ftl" as spring/>
 <#assign basePath=request.contextPath />
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

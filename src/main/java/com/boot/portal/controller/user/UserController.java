@@ -31,39 +31,5 @@ import java.util.Map;
 @RequestMapping("/user")
 public class UserController extends BaseController {
 
-    @Autowired
-    @Qualifier("localJdbcTemplate")
-    JdbcTemplate jdbcTemplate1;
 
-    @Autowired
-    UserService userService;
-
-    @PostMapping(value = "/login")
-    public ResultWapper login(Model model,
-                     @RequestParam("username") String username,
-                     @RequestParam("password") String password,
-                     HttpServletRequest request) throws Exception {
-        User ue = userService.findByUserAccount(username.trim());
-        ResultWapper rw = null;
-        do {
-            if (ue == null) {
-                rw = ResultWapper.error("用户或密码错误");
-                break;
-            }
-            if (!ue.getValid()) {
-                rw = ResultWapper.error("该用户被禁用");
-                break;
-            }
-            String dbpd = ue.getPassword();
-            String nowpd = MD5Util.getMD5(password.trim());
-            if (!dbpd.equals(nowpd)) {
-                rw = ResultWapper.error("用户或密码错误");
-                break;
-            }
-            rw=ResultWapper.success("登录成功");
-            rw.addResult("ue",ue);
-            WebUtils.setSessionAttribute(request,"user",ue);
-        } while (false);
-        return rw;
-    }
 }
