@@ -291,7 +291,7 @@ public class JdbcQueryBuilder {
                     args = ArrayUtils.insert(args.length,args,  start);
                 }
             }else{
-                logger.error("当前分页方法不支持数据库："+md.getDatabaseProductName());
+                logger.error("当前分页方法不支持数据库：{}",md.getDatabaseProductName());
                 throw new Exception("当前分页方法不支持数据库："+md.getDatabaseProductName());
             }
 

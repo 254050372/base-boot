@@ -12,7 +12,9 @@
 <script src="${basePath}/adminLTE/bower_components/jquery/dist/jquery.min.js"></script>
 <#--<script src="https://cdn.bootcss.com/jquery-validate/1.17.0/jquery.validate.min.js"></script>-->
 <#--jquery 验证-->
-<script src="${basePath}/js/base/jquery.validate.min.js"></script>
+<script src="${basePath}/js/validate/jquery.validate.min.js"></script>
+<script src="${basePath}/js/validate/validate_local.js"></script>
+<script src="${basePath}/js/validate/jquery.metadata.js"></script>
 
 <!-- Bootstrap 3.3.7 -->
 <script src="${basePath}/adminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -48,8 +50,7 @@
 
 <#--自定义js-->
 <script src="${basePath}/js/base/main.js"></script>
-<script src="${basePath}/js/validate/validate_local.js"></script>
-<#--<script src="${basePath}/js/validate/jquery.metadata.js"></script>-->
+
 
 <style type="text/css">
     /*渲染完成vue组件前不展示元素{{}}，在vue渲染元素内标记 v-cloak即可*/
