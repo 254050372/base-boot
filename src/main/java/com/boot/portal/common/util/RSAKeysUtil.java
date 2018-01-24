@@ -42,7 +42,7 @@ public class RSAKeysUtil {
         }*/
         //根据私钥加密数据库密码
         //密码明文，也就是数据库的密码
-        String plainText = "sbs123";
+        String plainText = "root";
         //druid加密密码
         System.out.println(ConfigTools.encrypt(plainText));
     }
