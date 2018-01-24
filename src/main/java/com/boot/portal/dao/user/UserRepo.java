@@ -20,7 +20,7 @@ import java.util.List;
  * @create 2017-08-12 
  **/
 @Repository
-public interface UserMapper extends BaseRepository<User,Long> {
+public interface UserRepo extends BaseRepository<User,Long> {
 
     /**
      * 根据账号分页查询

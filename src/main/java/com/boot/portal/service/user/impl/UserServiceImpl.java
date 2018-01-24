@@ -4,14 +4,12 @@ package com.boot.portal.service.user.impl;/**
  */
 
 
-import com.boot.portal.dao.base.BaseRepository;
-import com.boot.portal.dao.user.UserMapper;
+import com.boot.portal.dao.user.UserRepo;
 import com.boot.portal.entity.portal.user.User;
 import com.boot.portal.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,19 +23,14 @@ import java.util.List;
 public class UserServiceImpl extends BaseJPAServiceImpl<User> implements UserService {
 
     @Autowired
-    private UserMapper baseRepository;
-
-    @Override
-    public BaseRepository<User, Long> getRepository() {
-        return baseRepository;
-    }
+    private UserRepo userRepo;
 
     public Page<User> findPageByUserAccount(String account, Pageable pageable){
-        return baseRepository.findPageByUserAccount(account,pageable);
+        return userRepo.findPageByUserAccount(account,pageable);
     }
 
     public User findByUserAccount(String account){
-        List<User> lists=baseRepository.findByUserAccount(account);
+        List<User> lists= userRepo.findByUserAccount(account);
         if(lists!=null && lists.size()>0){
             return lists.get(0);
         }

@@ -14,6 +14,6 @@ import org.springframework.stereotype.Repository;
  * @create 2017-08-12 
  **/
 @Repository
-public interface UserInfoMapper extends BaseRepository<UserInfo,Long> {
+public interface UserInfoRepo extends BaseRepository<UserInfo,Long> {
 
 }
