@@ -12,7 +12,7 @@ import com.boot.portal.common.base.ResultWapper;
 import com.boot.portal.common.util.JaxbXMLUtil;
 import com.boot.portal.common.util.MD5Util;
 import com.boot.portal.common.util.UUIDGeneratorUtil;
-import com.boot.portal.dao.user.UserMapper;
+import com.boot.portal.dao.user.UserRepo;
 import com.boot.portal.entity.portal.user.User;
 import com.boot.portal.entity.portal.user.UserInfo;
 import com.boot.portal.service.user.UserInfoService;
@@ -52,7 +52,7 @@ public class TestController extends PortalApplicationTests {
     @Autowired
     UserService userService;
     @Autowired
-    UserMapper userMapper;
+    UserRepo userRepo;
     @Autowired
     UserInfoService userInfoService;
 
@@ -158,7 +158,7 @@ public class TestController extends PortalApplicationTests {
     @Rollback(value = false)
     public void testJPAUpdate() throws Exception {
         //完整对象查询测试，修改关联对象值
-        User u= userService.getOne(46L);
+        User u= userService.getOne(53L);
         System.out.println("旧email:"+u.getUserInfo().getEmail());
         u.getUserInfo().setEmail("dd:"+u.getUserInfo().getEmail());
         //userInfo的值成功被更新！
@@ -175,7 +175,7 @@ public class TestController extends PortalApplicationTests {
         int pageSize=1;
         //jpa对象分页查询,page从0开始第一页
         PageRequest pr=PageRequest.of(pageNum-1,pageSize,null);
-        Page<User> page= userMapper.findPageByUserAccount("254050372",pr);
+        Page<User> page= userRepo.findPageByUserAccount("254050372",pr);
         System.out.println(page.getContent());
     }
 }

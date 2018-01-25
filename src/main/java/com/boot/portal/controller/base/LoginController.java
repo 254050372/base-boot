@@ -34,9 +34,11 @@ import javax.servlet.http.HttpSession;
 //在控制器中可以直接书写参数的校验规则和返回消息
 @Validated
 public class LoginController extends BaseController{
+
+
     @Autowired
     @Qualifier("localJdbcTemplate")
-    JdbcTemplate jdbcTemplate1;
+    JdbcTemplate jdbcTemplate;
     /**
      * 国际化消息
      */
