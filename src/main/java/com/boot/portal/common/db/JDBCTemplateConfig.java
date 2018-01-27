@@ -52,8 +52,8 @@ public class JDBCTemplateConfig {
      * @param jdbcTemplate
      * @return
      */
-    @Bean(name="mysqlJQB")
-    public JdbcQueryBuilder mysqlJQB(@Qualifier("localJdbcTemplate")JdbcTemplate jdbcTemplate){
+    @Bean(name="localJQB")
+    public JdbcQueryBuilder localJQB(@Qualifier("localJdbcTemplate")JdbcTemplate jdbcTemplate){
         return new JdbcQueryBuilder(jdbcTemplate);
     }
 

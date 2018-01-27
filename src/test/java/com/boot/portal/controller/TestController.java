@@ -57,8 +57,8 @@ public class TestController extends PortalApplicationTests {
     UserInfoService userInfoService;
 
     @Autowired
-    @Qualifier("mysqlJQB")
-    private JdbcQueryBuilder mysqlJQB;
+    @Qualifier("localJQB")
+    private JdbcQueryBuilder localJQB;
 
 //    @Autowired
 //    @Qualifier("bpmJQB")
@@ -130,18 +130,18 @@ public class TestController extends PortalApplicationTests {
     public void testJDBCPage() throws Exception {
         Pages page=new Pages();
         //返回map
-        List<Map<String, Object>> list=mysqlJQB.queryPage("select *from t_user order by id",page);
+        List<Map<String, Object>> list=localJQB.queryPage("select *from t_user order by id",page);
         logger.info(Arrays.asList(list).toString()+" ,总条数："+page.getTotalCount()+",总页数："+page.getTotalPages()+
             ",是否存在下一页："+page.isHasNext()+",是否存在上一页："+page.isHasPre());
         Pages page1=new Pages(1,2);
         //返回单个对象
-        User ue=mysqlJQB.queryOneByObject("select *from t_user where id=?",new Object[]{"53"},User.class);
-        Map map=mysqlJQB.queryOneByMap("select *from t_user where id=?",new Object[]{"53"});
+        User ue=localJQB.queryOneByObject("select *from t_user where id=?",new Object[]{"53"},User.class);
+        Map map=localJQB.queryOneByMap("select *from t_user where id=?",new Object[]{"53"});
         logger.info("ue:"+ue);
         logger.info("ue map:"+map);
 
         //返回对象list
-        List<User> users=mysqlJQB.queryPage("select *from t_user order by id",page1,User.class);
+        List<User> users=localJQB.queryPage("select *from t_user order by id",page1,User.class);
         logger.info("users:"+users);
     }
 
