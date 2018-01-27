@@ -29,7 +29,7 @@ public class JDBCTemplateConfig {
         return new JdbcTemplate(dataSource);
     }
     /**
-     * bpm连接
+     * bpm连接,目前连接已被限制，不要使用
      * @param dataSource
      * @return
      */

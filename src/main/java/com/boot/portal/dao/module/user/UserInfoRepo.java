@@ -1,10 +1,10 @@
-package com.boot.portal.dao.user;/**
+package com.boot.portal.dao.module.user;/**
  * @description
  * @autor xbwu on 2017/8/12.
  */
 
 import com.boot.portal.dao.base.BaseRepository;
-import com.boot.portal.entity.portal.user.UserInfo;
+import com.boot.portal.entity.module.user.UserInfo;
 import org.springframework.stereotype.Repository;
 
 

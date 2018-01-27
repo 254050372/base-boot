@@ -12,11 +12,11 @@ import com.boot.portal.common.base.ResultWapper;
 import com.boot.portal.common.util.JaxbXMLUtil;
 import com.boot.portal.common.util.MD5Util;
 import com.boot.portal.common.util.UUIDGeneratorUtil;
-import com.boot.portal.dao.user.UserRepo;
-import com.boot.portal.entity.portal.user.User;
-import com.boot.portal.entity.portal.user.UserInfo;
-import com.boot.portal.service.user.UserInfoService;
-import com.boot.portal.service.user.UserService;
+import com.boot.portal.dao.module.user.UserRepo;
+import com.boot.portal.entity.module.user.User;
+import com.boot.portal.entity.module.user.UserInfo;
+import com.boot.portal.service.user.module.UserInfoService;
+import com.boot.portal.service.user.module.UserService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -60,14 +60,14 @@ public class TestController extends PortalApplicationTests {
     @Qualifier("mysqlJQB")
     private JdbcQueryBuilder mysqlJQB;
 
-    @Autowired
-    @Qualifier("bpmJQB")
-    private JdbcQueryBuilder bpmJQB;
+//    @Autowired
+//    @Qualifier("bpmJQB")
+//    private JdbcQueryBuilder bpmJQB;
 
     @Test
     public void testLocal(){
         List<Map<String,Object>> list = localJDBC.queryForList("select * from t_user");
-        System.out.println(Arrays.asList(list).toString());
+        logger.info(Arrays.asList(list).toString());
     }
     @Test
     //禁止回滚
@@ -81,7 +81,7 @@ public class TestController extends PortalApplicationTests {
             String password= MD5Util.getMD5(userid);
             localJDBC.execute("insert into sso_user (id,account,password,valid) values('"+id+"','"+userid+"','"+password+"',1) ");
         }
-        System.out.println(Arrays.asList(list).toString());
+        logger.info(Arrays.asList(list).toString());
     }
     @Test
     //禁止回滚
@@ -95,12 +95,12 @@ public class TestController extends PortalApplicationTests {
     @Test
     public void testBPM(){
         List<Map<String,Object>> list = bpmJDBC.queryForList("SELECT * from users where rownum<2");
-        System.out.println(Arrays.asList(list).toString());
+        logger.info(Arrays.asList(list).toString());
     }
     @Test
     public void testAJAXJSON(){
         List<Map<String,Object>> list = localJDBC.queryForList("select * from t_user");
-        System.out.println(JSON.toJSONString(ResultWapper.success("").addResult("list",list)));
+        logger.info(JSON.toJSONString(ResultWapper.success("").addResult("list",list)));
     }
     @Test
     //禁止回滚
@@ -117,8 +117,8 @@ public class TestController extends PortalApplicationTests {
         us.setValid(true);
         userInfoService.saveOrUpdate(ui);
         userService.saveOrUpdate(us);
-        System.out.println(us.getAccount()+","+us.getValid());
-        System.out.println(JaxbXMLUtil.beanToXml(us, User.class));
+        logger.info(us.getAccount()+","+us.getValid());
+        logger.info(JaxbXMLUtil.beanToXml(us, User.class));
     }
 
     /**
@@ -129,24 +129,20 @@ public class TestController extends PortalApplicationTests {
     @Test
     public void testJDBCPage() throws Exception {
         Pages page=new Pages();
-        List<Map<String, Object>> list=mysqlJQB.queryPage("select *from t_user order by id",page);
-        System.out.println(Arrays.asList(list).toString()+" ,总条数："+page.getTotalCount()+",总页数："+page.getTotalPages()+
-            ",是否存在下一页："+page.isHasNext()+",是否存在上一页："+page.isHasPre());
-
-        Pages page1=new Pages(1,2);
         //返回map
-        List<Map<String, Object>> list1=bpmJQB.queryPage("select *from users order by id",page1);
-        System.out.println(Arrays.asList(list1).toString()+" ,总条数："+page1.getTotalCount()+",总页数："+page1.getTotalPages()+
-                ",是否存在下一页："+page1.isHasNext()+",是否存在上一页："+page1.isHasPre());
+        List<Map<String, Object>> list=mysqlJQB.queryPage("select *from t_user order by id",page);
+        logger.info(Arrays.asList(list).toString()+" ,总条数："+page.getTotalCount()+",总页数："+page.getTotalPages()+
+            ",是否存在下一页："+page.isHasNext()+",是否存在上一页："+page.isHasPre());
+        Pages page1=new Pages(1,2);
         //返回单个对象
         User ue=mysqlJQB.queryOneByObject("select *from t_user where id=?",new Object[]{"53"},User.class);
         Map map=mysqlJQB.queryOneByMap("select *from t_user where id=?",new Object[]{"53"});
-        System.out.println("ue:"+ue);
-        System.out.println("ue map:"+map);
+        logger.info("ue:"+ue);
+        logger.info("ue map:"+map);
 
         //返回对象list
         List<User> users=mysqlJQB.queryPage("select *from t_user order by id",page1,User.class);
-        System.out.println("users:"+users);
+        logger.info("users:"+users);
     }
 
     /**
@@ -159,7 +155,7 @@ public class TestController extends PortalApplicationTests {
     public void testJPAUpdate() throws Exception {
         //完整对象查询测试，修改关联对象值
         User u= userService.getOne(53L);
-        System.out.println("旧email:"+u.getUserInfo().getEmail());
+        logger.info("旧email:"+u.getUserInfo().getEmail());
         u.getUserInfo().setEmail("dd:"+u.getUserInfo().getEmail());
         //userInfo的值成功被更新！
         userService.saveOrUpdate(u);
@@ -176,6 +172,6 @@ public class TestController extends PortalApplicationTests {
         //jpa对象分页查询,page从0开始第一页
         PageRequest pr=PageRequest.of(pageNum-1,pageSize,null);
         Page<User> page= userRepo.findPageByUserAccount("254050372",pr);
-        System.out.println(page.getContent());
+        logger.info(page.getContent().toString());
     }
 }

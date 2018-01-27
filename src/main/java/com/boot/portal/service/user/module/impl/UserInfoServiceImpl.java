@@ -1,12 +1,13 @@
-package com.boot.portal.service.user.impl;/**
+package com.boot.portal.service.user.module.impl;/**
  * @description
  * @autor xbwu on 2017/8/12.
  */
 
 
-import com.boot.portal.dao.user.UserInfoRepo;
-import com.boot.portal.entity.portal.user.UserInfo;
-import com.boot.portal.service.user.UserInfoService;
+import com.boot.portal.dao.module.user.UserInfoRepo;
+import com.boot.portal.entity.module.user.UserInfo;
+import com.boot.portal.service.user.module.UserInfoService;
+import com.boot.portal.service.user.base.impl.BaseJPAServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

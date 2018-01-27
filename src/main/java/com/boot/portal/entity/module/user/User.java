@@ -1,10 +1,9 @@
-package com.boot.portal.entity.portal.user;/**
+package com.boot.portal.entity.module.user;/**
  * @description
  * @autor xbwu on 2017/8/12.
  */
 
 import com.boot.portal.entity.base.BaseEntity;
-import org.springframework.context.annotation.Lazy;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -38,7 +37,6 @@ import javax.xml.bind.annotation.XmlRootElement;
                 @Index(name="t_user_account", columnList = "account")
                 //@Index(name="multi_column_index", columnList = {"col1", "col2"},
         })
-@Lazy(false)
 public class User extends BaseEntity {
 
     //是否序列化，格式化等,覆盖JSONType，不写则正常序列化

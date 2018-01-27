@@ -1,4 +1,4 @@
-package com.boot.portal.service.user;
+package com.boot.portal.service.user.base;
 
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;

@@ -1,10 +1,10 @@
-package com.boot.portal.dao.user;/**
+package com.boot.portal.dao.module.user;/**
  * @description
  * @autor xbwu on 2017/8/12.
  */
 
 import com.boot.portal.dao.base.BaseRepository;
-import com.boot.portal.entity.portal.user.User;
+import com.boot.portal.entity.module.user.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;

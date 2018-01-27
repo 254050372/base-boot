@@ -1,4 +1,4 @@
-package com.boot.portal.entity.portal.user;/**
+package com.boot.portal.entity.module.user;/**
  * @description
  * @autor xbwu on 2017/9/28.
  */

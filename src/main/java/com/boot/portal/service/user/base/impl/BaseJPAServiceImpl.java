@@ -1,11 +1,11 @@
-package com.boot.portal.service.user.impl;/**
+package com.boot.portal.service.user.base.impl;/**
  * @description
  * @autor xbwu on 2017/11/14.
  */
 
 import com.boot.portal.dao.base.BaseRepository;
 import com.boot.portal.entity.base.BaseEntity;
-import com.boot.portal.service.user.BaseJPAService;
+import com.boot.portal.service.user.base.BaseJPAService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

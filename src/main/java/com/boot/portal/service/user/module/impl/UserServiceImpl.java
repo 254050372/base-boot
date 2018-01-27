@@ -1,12 +1,13 @@
-package com.boot.portal.service.user.impl;/**
+package com.boot.portal.service.user.module.impl;/**
  * @description
  * @autor xbwu on 2017/8/12.
  */
 
 
-import com.boot.portal.dao.user.UserRepo;
-import com.boot.portal.entity.portal.user.User;
-import com.boot.portal.service.user.UserService;
+import com.boot.portal.dao.module.user.UserRepo;
+import com.boot.portal.entity.module.user.User;
+import com.boot.portal.service.user.module.UserService;
+import com.boot.portal.service.user.base.impl.BaseJPAServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

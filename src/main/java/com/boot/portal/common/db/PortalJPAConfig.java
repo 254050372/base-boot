@@ -35,7 +35,7 @@ import java.util.Map;
 @EnableSpringDataWebSupport
 public class PortalJPAConfig {
     // 精确到 本地 目录，以便跟其他数据源隔离(mapper接口扫描地址)
-    static final String PACKAGE = "com.boot.*.dao";
+    static final String PACKAGE = "com.boot.**.dao";
 
     @Autowired
     @Qualifier("portalDataSource")
@@ -49,7 +49,7 @@ public class PortalJPAConfig {
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
         //设置java bean所在的包名
-        factory.setPackagesToScan("com.boot.portal.entity.portal.*");
+        factory.setPackagesToScan("com.boot.*.entity.**");
         factory.setDataSource(dataSource);
 
         Map<String, Object> jpaProperties = new HashMap<String, Object>();

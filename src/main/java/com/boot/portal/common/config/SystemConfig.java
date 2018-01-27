@@ -3,6 +3,8 @@ package com.boot.portal.common.config;/**
  * @autor xbwu on 2018/1/24.
  */
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -55,5 +57,9 @@ public class SystemConfig {
     public void setAuthor(String author) {
         this.author = author;
     }
-
+    
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
+    }
 }

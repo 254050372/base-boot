@@ -2,7 +2,7 @@ package com.boot.portal.common.util;/**
  * @description
  * @autor xbwu on 2017/8/18.
  */
-import com.boot.portal.entity.portal.user.User;
+import com.boot.portal.entity.module.user.User;
 
 import java.io.IOException;
 import java.io.StringReader;
