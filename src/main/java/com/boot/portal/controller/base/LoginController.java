@@ -3,6 +3,7 @@ package com.boot.portal.controller.base;/**
  * @autor xbwu on 2018/1/22.
  */
 
+import com.boot.portal.common.asyn.TestAsynTask;
 import com.boot.portal.common.base.ResultWapper;
 import com.boot.portal.common.config.WebSecurityConfig;
 import com.boot.portal.common.util.LocaleMessageSource;
@@ -14,15 +15,22 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.Callable;
+import java.util.concurrent.Future;
 
 /**
  * 登录
@@ -77,7 +85,7 @@ public class LoginController extends BaseController{
             }
             rw=ResultWapper.success(i18n.getMsg("login.success"));
             rw.addResult("ue",ue);
-            WebUtils.setSessionAttribute(request,WebSecurityConfig.SESSION_KEY,ue);
+            WebUtils.setSessionAttribute(request,WebSecurityConfig.USER,ue);
         } while (false);
         return rw;
     }
@@ -86,7 +94,8 @@ public class LoginController extends BaseController{
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         // 移除session
-        session.removeAttribute(WebSecurityConfig.SESSION_KEY);
+        session.removeAttribute(WebSecurityConfig.USER);
         return "redirect:/login";
     }
+
 }

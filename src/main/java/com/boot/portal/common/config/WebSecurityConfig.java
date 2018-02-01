@@ -22,7 +22,7 @@ public class WebSecurityConfig implements WebMvcConfigurer {
     /**
      * 登录session key
      */
-    public final static String SESSION_KEY = "user";
+    public final static String USER = "user";
 
     @Bean
     public SecurityInterceptor getSecurityInterceptor() {
@@ -55,7 +55,7 @@ public class WebSecurityConfig implements WebMvcConfigurer {
         public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
                 throws Exception {
             HttpSession session = request.getSession();
-            if (session.getAttribute(SESSION_KEY) != null)
+            if (session.getAttribute(USER) != null)
                 return true;
             // 跳转登录
             String url = "/login";

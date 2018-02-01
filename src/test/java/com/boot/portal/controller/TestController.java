@@ -6,6 +6,7 @@ package com.boot.portal.controller;/**
 import com.alibaba.fastjson.JSON;
 import com.boot.portal.PortalApplicationTests;
 
+import com.boot.portal.common.asyn.TestAsynTask;
 import com.boot.portal.common.base.JdbcQueryBuilder;
 import com.boot.portal.common.base.Pages;
 import com.boot.portal.common.base.ResultWapper;
@@ -25,10 +26,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Future;
 
 /**
  * 测试入口
@@ -59,6 +62,9 @@ public class TestController extends PortalApplicationTests {
     @Autowired
     @Qualifier("localJQB")
     private JdbcQueryBuilder localJQB;
+
+    @Autowired
+    TestAsynTask testAsynTask;
 
 //    @Autowired
 //    @Qualifier("bpmJQB")
@@ -173,5 +179,22 @@ public class TestController extends PortalApplicationTests {
         PageRequest pr=PageRequest.of(pageNum-1,pageSize,null);
         Page<User> page= userRepo.findPageByUserAccount("254050372",pr);
         logger.info(page.getContent().toString());
+    }
+
+    /**
+     * 异步多线程调用
+     * @throws Exception
+     */
+    @Test
+    public void testAsyn() throws Exception{
+        System.out.println("=====hello this is asyn call back api");
+        Future<String> f=testAsynTask.doTask1();
+        Future<String> f1=testAsynTask.doTask2();
+        while(true) {
+            if(f.isDone() && f1.isDone()) {
+                logger.info("Task result: {}", f.get()+f1.get());
+                break;
+            }
+        }
     }
 }

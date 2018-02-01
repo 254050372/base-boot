@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import static com.boot.portal.common.config.WebSecurityConfig.USER;
 
 /**
  * 首页
@@ -19,6 +22,9 @@ public class IndexController extends BaseController {
 
     @RequestMapping("/")
     public ModelAndView login(HttpServletRequest request) throws Exception{
+        HttpSession session = request.getSession();
+        if (session.getAttribute(USER) != null)
+            return redirectController("index");
         ModelAndView mv = getMV("login");
         return mv;
     }
@@ -28,4 +34,5 @@ public class IndexController extends BaseController {
         ModelAndView mv = getMV("index");
         return mv;
     }
+
 }
