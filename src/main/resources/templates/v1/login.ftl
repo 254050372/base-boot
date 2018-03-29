@@ -8,13 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <#include "common/baseProperties.ftl"/>
-    <link href="${basePath}/css/module/login/signin.css" rel="stylesheet">
+    <link href="${baseResourcePath}/css/module/login/signin.css" rel="stylesheet">
 </head>
 <body style="min-height: auto!important;">
 
 <div class="htmleaf-container" id="loginBody" v-cloak>
     <div class="signin">
-        <div class="signin-head"><img src="${basePath}/img/login/login.gif" alt="" class="img-circle"></div>
+        <div class="signin-head"><img src="${baseResourcePath}/img/login/login.gif" alt="" class="img-circle"></div>
         <form class="form-signin" role="form" id="loginForm" onsubmit="return false;">
             <input type="text" name="username" id="username" class="form-control t-show" placeholder="<@spring.message code="login.username" />" autofocus/>
             <input type="password" name="password" id="password" class="form-control t-show" placeholder="<@spring.message code="login.password" />"/>
