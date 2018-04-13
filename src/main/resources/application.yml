@@ -33,8 +33,3 @@ server:
 logging:
   config: classpath:logback-spring.xml
 
-
-#==============================local define config========================================
-boot:
-  base:
-    templateSprefix: v1

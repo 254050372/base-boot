@@ -28,10 +28,10 @@ import org.springframework.context.annotation.PropertySource;
 //Configuration与ConfigurationProperties需配合一起使用，否则无法注入
 @Configuration
 //用来指定额外的配置文件位置和编码
-@PropertySource(value = "classpath:config/systemConfig.properties",encoding = "utf-8")
+@PropertySource(value = "classpath:config/baseConstant.properties",encoding = "utf-8")
 //必须指定一个prefix，此处忽略注入失败，请注意自己的变量是否注入成功！
-@ConfigurationProperties(prefix = "sys",ignoreUnknownFields = false)
-public class SystemConfig {
+@ConfigurationProperties(prefix = "boot.base",ignoreUnknownFields = false)
+public class BaseConstant {
     /**
      * 系统作者
      */
@@ -40,24 +40,23 @@ public class SystemConfig {
      * 当前版本
      */
     public static String version;
-
-
-    public String getVersion() {
-        return version;
-    }
+    /**
+     * 模板版本
+     */
+    public static String templatesPrefix;
 
     public void setVersion(String version) {
-        SystemConfig.version = version;
-    }
-
-    public String getAuthor() {
-        return author;
+        this.version = version;
     }
 
     public void setAuthor(String author) {
         this.author = author;
     }
-    
+
+    public void setTemplatesPrefix(String templatesPrefix) {
+        this.templatesPrefix = templatesPrefix;
+    }
+
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);

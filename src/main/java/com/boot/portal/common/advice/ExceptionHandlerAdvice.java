@@ -3,15 +3,13 @@ package com.boot.portal.common.advice;/**
  * @autor xbwu on 2017/8/18.
  */
 
-import com.boot.portal.common.config.BaseConstants;
-import com.boot.portal.common.exceptions.AJAXServerException;
 import com.boot.portal.common.base.ResultWapper;
+import com.boot.portal.common.config.BaseConstant;
 import com.boot.portal.common.exceptions.AJAXParamException;
+import com.boot.portal.common.exceptions.AJAXServerException;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -41,7 +39,7 @@ public class ExceptionHandlerAdvice {
         String header=request.getHeader("x-requested-with");
         logger.error("程序异常",e);
         if(StringUtils.isBlank(header)){//判断是否ajax请求，不是则跳转页面，是则返回标准封装结果
-            return new ModelAndView(BaseConstants.templatesPrefix+"/common/error/404");
+            return new ModelAndView(BaseConstant.templatesPrefix+"/common/error/404");
         }else{
             return ResultWapper.error(e.getMessage());
         }

@@ -5,7 +5,6 @@ package com.boot.portal.controller;/**
 
 import com.alibaba.fastjson.JSON;
 import com.boot.portal.PortalApplicationTests;
-
 import com.boot.portal.common.asyn.TestAsynTask;
 import com.boot.portal.common.base.JdbcQueryBuilder;
 import com.boot.portal.common.base.Pages;
@@ -26,7 +25,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Arrays;
 import java.util.List;
@@ -50,9 +48,6 @@ public class TestController extends PortalApplicationTests {
     JdbcTemplate bpmJDBC;
 
     @Autowired
-    @Qualifier("hrJdbcTemplate")
-    JdbcTemplate hrJDBC;
-    @Autowired
     UserService userService;
     @Autowired
     UserRepo userRepo;
@@ -73,20 +68,6 @@ public class TestController extends PortalApplicationTests {
     @Test
     public void testLocal(){
         List<Map<String,Object>> list = localJDBC.queryForList("select * from t_user");
-        logger.info(Arrays.asList(list).toString());
-    }
-    @Test
-    //禁止回滚
-    //@Rollback(value = false)
-    public void testHRImportSSO(){
-        localJDBC.execute("truncate table sso_user");
-        List<Map<String,Object>> list = hrJDBC.queryForList("select rtrim(u.emp_id) emp_id from h_emp_mstr u  where u.emp_state=1");
-        for(Map<String,Object> userMap:list){
-            String id=UUIDGeneratorUtil.getUUID();
-            String userid=(String) userMap.get("emp_id");
-            String password= MD5Util.getMD5(userid);
-            localJDBC.execute("insert into sso_user (id,account,password,valid) values('"+id+"','"+userid+"','"+password+"',1) ");
-        }
         logger.info(Arrays.asList(list).toString());
     }
     @Test
@@ -176,8 +157,8 @@ public class TestController extends PortalApplicationTests {
         int pageNum=1;
         int pageSize=1;
         //jpa对象分页查询,page从0开始第一页
-        PageRequest pr=PageRequest.of(pageNum-1,pageSize,null);
-        Page<User> page= userRepo.findPageByUserAccount("254050372",pr);
+        PageRequest pr=PageRequest.of(pageNum-1,pageSize);
+        Page<User> page= userRepo.findPageByUserAccount("chixinzei",pr);
         logger.info(page.getContent().toString());
     }
 
