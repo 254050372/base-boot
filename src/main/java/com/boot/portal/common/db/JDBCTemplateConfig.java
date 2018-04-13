@@ -37,15 +37,6 @@ public class JDBCTemplateConfig {
     public JdbcTemplate bpmJdbcTemplate(@Qualifier("bpmDataSource")DataSource dataSource){
         return new JdbcTemplate(dataSource);
     }
-    /**
-     * hr连接
-     * @param dataSource
-     * @return
-     */
-    @Bean(name = "hrJdbcTemplate")
-    public JdbcTemplate hrJdbcTemplate(@Qualifier("hrDataSource")DataSource dataSource){
-        return new JdbcTemplate(dataSource);
-    }
 
     /**
      * 注入mysql分页查询

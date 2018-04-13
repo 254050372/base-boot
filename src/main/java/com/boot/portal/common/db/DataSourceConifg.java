@@ -24,20 +24,13 @@ public class DataSourceConifg {
     @Primary
     //数据源名称
     @Bean(name="portalDataSource")
-    //松耦合属性分层注解，注意，跟druid整合时，需要忽略无效注入属性ignoreInvalidFields = true，避免注入报错
-    @ConfigurationProperties("spring.datasource.druid.local")
+    @ConfigurationProperties(prefix = "spring.datasource.druid.local")
     public DataSource dataSourcePortal(){
         return DruidDataSourceBuilder.create().build();
     }
     @Bean(name="bpmDataSource")
-    @ConfigurationProperties("spring.datasource.druid.bpm")
+    @ConfigurationProperties(prefix ="spring.datasource.druid.bpm")
     public DataSource dataSourceBPM(){
         return DruidDataSourceBuilder.create().build();
     }
-    @Bean(name="hrDataSource")
-    @ConfigurationProperties("spring.datasource.druid.hr")
-    public DataSource dataSourceHR(){
-        return DruidDataSourceBuilder.create().build();
-    }
-
 }
