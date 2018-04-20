@@ -16,7 +16,7 @@ spring:
       tag_syntax: auto_detect
   mvc:
     #资源文件访问前缀,默认无前缀 /**，  如果配置成 /aa/** ，则访问html，js，css文件时，需要加上：/aa
-    static-path-pattern: /res/**
+    static-path-pattern: ${local.static-path-pattern}/**
     favicon:
       #使用自己的favicon.ico
       enabled: false
@@ -38,3 +38,7 @@ server:
 logging:
   config: classpath:logback-spring.xml
 
+
+local:
+  #资源文件访问前缀，供页面上获取使用
+  static-path-pattern: /res

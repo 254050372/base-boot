@@ -45,6 +45,8 @@
 <script src="${baseResourcePath}/js/base/vue.min.js"></script>
 [#--ladda按钮加载样式，api：http://www.htmleaf.com/jQuery/Buttons-Icons/201506232089.html--]
 <link rel="stylesheet" href="${baseResourcePath}/css/base/ladda-themeless.min.css">
+[#--登录界面样式--]
+<link href="${baseResourcePath}/css/module/login/signin.css" rel="stylesheet">
 <script src="${baseResourcePath}/js/base/spin.min.js"></script>
 <script src="${baseResourcePath}/js/base/ladda.min.js"></script>
 [#--自定义js--]

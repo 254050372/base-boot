@@ -3,4 +3,4 @@
     [#assign user=Session["user"] /]
 [/#if]
 [#assign basePath=request.contextPath /]
-[#assign baseResourcePath=basePath+"/res" /]
+[#assign baseResourcePath=basePath+springMacroRequestContext.getWebApplicationContext().getEnvironment().getProperty("local.static-path-pattern") /]

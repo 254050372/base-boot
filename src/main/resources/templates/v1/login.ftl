@@ -2,14 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="zh">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    [#include "common/base/baseStaticFile.ftl"/]
-    <link href="${baseResourcePath}/css/module/login/signin.css" rel="stylesheet">
-</head>
+[#include "common/head.ftl"/]
 <body style="min-height: auto!important;">
 
 <div class="htmleaf-container" id="loginBody" v-cloak>
@@ -65,7 +58,7 @@
         //数据+dom更新完毕后回调事件
         login.$nextTick(function () {
             $("#loginForm").validate({
-                debug: true, //调试模式取消submit的默认提交功能
+                //debug: true, //调试模式取消submit的默认提交功能
                 //errorClass: "label.error", //默认为错误的样式类为：error
                 focusInvalid: false, //当为false时，验证无效时，没有焦点响应
                 onkeyup: false,
@@ -75,7 +68,7 @@
                     //按钮设置加载中
                     submitButton.start();
                     if(!ajaxSubmitFlag){
-                        toastr.info('<@spring.message code="server.busy" />');
+                        toastr.info('[@spring.message code="server.busy" /]');
                         return;
                     }
                     $.post('${basePath}/login',
@@ -100,10 +93,10 @@
                 },
                 messages: {
                     username: {
-                        required: '<@spring.message code="form.validate.required" />'
+                        required: '[@spring.message code="form.validate.required" /]'
                     },
                     password: {
-                        required: '<@spring.message code="form.validate.required" />'
+                        required: '[@spring.message code="form.validate.required" /]'
                     }
                 }
             });
