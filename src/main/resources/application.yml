@@ -1,7 +1,7 @@
 #==============================spring config========================================
 spring:
   profiles:
-    #???????????application.yaml????profile???????????application.yaml??
+    #激活配置文件
     #spring.profiles.active=dev
     active: test
   #freemarker config
@@ -9,26 +9,25 @@ spring:
     charset: UTF-8
     content-type: text/html
     request-context-attribute: request
-    #??ftl????
+    #页面位置
     template-loader-path: classpath:/templates
   mvc:
-    # ???? /**  ??url??????????? /aa/**  ??html????js?css???????/aa
+    #资源文件访问前缀,默认无前缀 /**，  如果配置成 /aa/** ，则访问html，js，css文件时，需要加上：/aa
     static-path-pattern: /res/**
   http:
     encoding:
-      #??response??
       force: true
   #i18n config
   messages:
       encoding: UTF-8
-      #????????
+      #国际化文件夹
       basename: /i18n/messages
       always-use-message-format: true
-##???
+##内置tomcat启动服务器端口
 server:
   port: 8087
 #==============================logging config========================================
-#??log4j2??db??????????????logback??????
+#log4j2之前配置下来有问题，先使用logback作为日志工具
 #logging.config=classpath:log4j2-spring.xml
 logging:
   config: classpath:logback-spring.xml
