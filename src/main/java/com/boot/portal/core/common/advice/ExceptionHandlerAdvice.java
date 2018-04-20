@@ -37,11 +37,11 @@ public class ExceptionHandlerAdvice {
     @ExceptionHandler(Exception.class)
     public Object handleException(Exception e,HttpServletRequest request) {
         String header=request.getHeader("x-requested-with");
-        logger.error("程序异常",e);
+        logger.error("服务器异常，请稍后再试",e);
         if(StringUtils.isBlank(header)){//判断是否ajax请求，不是则跳转页面，是则返回标准封装结果
             return new ModelAndView(BaseConstant.templatesPrefix+"/common/error/404");
         }else{
-            return ResultWapper.error(e.getMessage());
+            return ResultWapper.error("服务器异常，请稍后再试");
         }
     }
 

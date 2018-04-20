@@ -21,7 +21,7 @@ public class CustomAsyncExceptionHandler implements AsyncUncaughtExceptionHandle
 
     @Override
     public void handleUncaughtException(Throwable throwable, Method method, Object... obj) {
-        this.logger.error(String.format("异步线程池异常，方法：'%s'，主要异常：'%s'", method,throwable.getMessage()), throwable);
+        this.logger.error("异步线程池异常，方法：'{}'，主要异常：'{}' ", method,throwable.getMessage(), throwable);
         /*for (Object param : obj) {
             System.out.println("Parameter value - " + param);
         }*/

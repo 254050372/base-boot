@@ -1,5 +1,7 @@
 package com.boot.portal;
 
+import ch.qos.logback.classic.LoggerContext;
+import ch.qos.logback.core.util.StatusPrinter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -15,8 +17,10 @@ public class PortalApplication extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		logger.info("SPRING VERSION: " + SpringVersion.getVersion());
-		logger.info("SPRING BOOT VERSION: " + SpringBootVersion.getVersion());
+		logger.info("SPRING VERSION: {}" , SpringVersion.getVersion());
+		logger.info("SPRING BOOT VERSION: {}" , SpringBootVersion.getVersion());
+//		LoggerContext lc = (LoggerContext)LoggerFactory.getILoggerFactory();
+//		StatusPrinter.print(lc);
 		return application.sources(PortalApplication.class);
 	}
 

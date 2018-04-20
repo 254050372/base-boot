@@ -61,7 +61,7 @@ public class JdbcQueryBuilder {
         sql = pageParmBuilder.getSql();
         args = pageParmBuilder.getArgs();
 
-        logger.info("paging sql : \n" + sql);
+        logger.info("paging sql : \n {}",sql);
         return jdbcTemplate.queryForList(sql, args);
     }
 
@@ -147,7 +147,7 @@ public class JdbcQueryBuilder {
                 sql  =  matcher.replaceFirst(args[i].toString()) ;
             }
         }
-        logger.info("paging sql : \n" + sql);
+        logger.info("paging sql : \n {}",sql);
         try {
             return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(c));
         }catch(EmptyResultDataAccessException e){
@@ -183,7 +183,7 @@ public class JdbcQueryBuilder {
             sql  =  matcher.replaceFirst(args[i].toString()) ;
         }
 
-        logger.info("paging sql : \n" + sql);
+        logger.info("paging sql : \n {}" ,sql);
         return  jdbcTemplate.query(sql, new BeanPropertyRowMapper(c));
     }
 
