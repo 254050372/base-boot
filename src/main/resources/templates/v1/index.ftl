@@ -1,22 +1,22 @@
-<#include "common/head.ftl"/>
-<#assign user=Session["user"] />
+[#include "common/head.ftl"/]
 <body class="hold-transition skin-blue sidebar-mini">
+[#include "common/base/baseJSAttribute.ftl"/]
 <div class="wrapper">
-<#include "common/top.ftl"/>
-<#include "common/left.ftl"/>
+[#include "common/top.ftl"/]
+[#include "common/left.ftl"/]
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-    <#--<section class="content-header">
-        <h1>
-            欢迎来到sbs 中间件平台
-            <small>请在左侧菜单选取你想要查看的功能吧！</small>
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="${basePath}"><i class="fa fa-dashboard"></i>主页</a></li>
-            <li class="active">当前位置</li>
-        </ol>
-    </section>-->
+        [#--<section class="content-header">
+            <h1>
+                欢迎来到sbs 中间件平台
+                <small>请在左侧菜单选取你想要查看的功能吧！</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="${basePath}"><i class="fa fa-dashboard"></i>主页</a></li>
+                <li class="active">当前位置</li>
+            </ol>
+        </section>--]
         <!-- 主要内容区域 -->
         <section class="content container-fluid">
             <div class="col-md-12">
@@ -33,7 +33,7 @@
     </div>
     <!-- /.content-wrapper -->
 
-<#include "common/bottom.ftl"/>
+[#include "common/bottom.ftl"/]
     <script type="text/javascript">
         //tab窗口
         $(function () {

@@ -11,9 +11,15 @@ spring:
     request-context-attribute: request
     #页面位置
     template-loader-path: classpath:/templates
+    settings:
+      #freemarker指令和注释使用中括号代替尖括号
+      tag_syntax: auto_detect
   mvc:
     #资源文件访问前缀,默认无前缀 /**，  如果配置成 /aa/** ，则访问html，js，css文件时，需要加上：/aa
     static-path-pattern: /res/**
+    favicon:
+      #使用自己的favicon.ico
+      enabled: false
   http:
     encoding:
       force: true

@@ -5,7 +5,7 @@
         Anything you want
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2017 <a href="http://www.sbszipper.com/">浔兴拉链股份有限公司</a>.</strong> 版权所有.
+    <strong>Copyright &copy; 2017 <a href="//www.sbszipper.com/" target="view_window">浔兴拉链股份有限公司</a>.</strong> 版权所有.
 </footer>
 
 <!-- Control Sidebar -->

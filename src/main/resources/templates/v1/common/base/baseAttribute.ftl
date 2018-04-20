@@ -1,0 +1,6 @@
+[#--公共参数存放--]
+[#if Session["user"]??]
+    [#assign user=Session["user"] /]
+[/#if]
+[#assign basePath=request.contextPath /]
+[#assign baseResourcePath=basePath+"/res" /]
