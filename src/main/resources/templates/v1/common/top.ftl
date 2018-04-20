@@ -153,7 +153,7 @@
                                 <a href="#" class="btn btn-default btn-flat">个人配置</a>
                             </div>
                             <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat">登出</a>
+                                <a href="${basePath}/logout" class="btn btn-default btn-flat">登出</a>
                             </div>
                         </li>
                     </ul>

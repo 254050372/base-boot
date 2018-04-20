@@ -85,10 +85,10 @@ public class LoginController extends BaseController{
 
 
     @GetMapping("/logout")
-    public String logout(HttpSession session) {
+    public ModelAndView logout(HttpSession session) {
         // 移除session
         session.removeAttribute(WebSecurityConfig.USER);
-        return "redirect:/login";
+        return redirectController("login");
     }
 
 }

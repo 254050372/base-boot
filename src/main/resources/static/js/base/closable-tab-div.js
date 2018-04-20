@@ -17,7 +17,7 @@ var closableTab = {
 				li_tab = li_tab + '</a></li>';
 			}
 		 	var tabpanel = '<div role="tabpanel" class="tab-pane" id="'+container+'" style="width: 100%;">'+
-	    					   '<img src="img/other/loading.gif" width="600" height="500" style="\n' +
+	    					   '<img src="'+$('#baseResourcePath').val()+'/img/other/loading.gif" width="600" height="500" style="\n' +
 								'    margin: 0 auto;\n' +
 								'    display:block;\n' +
 								'">'+

@@ -60,3 +60,5 @@
         display: none;
     }
 </style>
+<input type="hidden" id="basePath" value="${basePath}"/>
+<input type="hidden" id="baseResourcePath" value="${baseResourcePath}"/>
