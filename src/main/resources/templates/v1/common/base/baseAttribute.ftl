@@ -8,4 +8,5 @@
 [/#if]
 [#assign basePath=request.contextPath /]
 [#assign baseResourcePath=basePath+springMacroRequestContext.getWebApplicationContext().getEnvironment().getProperty("local.static-path-pattern") /]
+[#--自定义宏指令引入--]
 [#include "baseMacro.ftl"]
