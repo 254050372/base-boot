@@ -4,53 +4,55 @@
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+[@jsImport isExternal=true path="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"][/@jsImport]
+[@jsImport isExternal=true path="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"][/@jsImport]
 <![endif]-->
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 3 -->
-<script src="${baseResourcePath}/adminLTE/bower_components/jquery/dist/jquery.min.js"></script>
+[@jsImport path="/adminLTE/bower_components/jquery/dist/jquery.min.js"][/@jsImport]
 [#--<script src="https://cdn.bootcss.com/jquery-validate/1.17.0/jquery.validate.min.js"></script>--]
 [#--jquery 验证--]
-<script src="${baseResourcePath}/js/validate/jquery.validate.min.js"></script>
-<script src="${baseResourcePath}/js/validate/validate_local.js"></script>
-<script src="${baseResourcePath}/js/validate/jquery.metadata.js"></script>
+[@jsImport path="/js/validate/jquery.validate.min.js"][/@jsImport]
+[@jsImport path="/js/validate/validate_local.js"][/@jsImport]
+[@jsImport path="/js/validate/jquery.metadata.js"][/@jsImport]
 
 <!-- Bootstrap 3.3.7 -->
-<script src="${baseResourcePath}/adminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+[@jsImport path="/adminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js"][/@jsImport]
 <!-- AdminLTE App -->
-<script src="${baseResourcePath}/adminLTE/dist/js/adminlte.min.js"></script>
+[@jsImport path="/adminLTE/dist/js/adminlte.min.js"][/@jsImport]
 <!-- Google Font -->
-<link rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-<link rel="stylesheet" href="${baseResourcePath}/adminLTE/bower_components/bootstrap/dist/css/bootstrap.min.css">
+[@cssImport isExternal=true path="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"][/@cssImport]
+[@cssImport path="/adminLTE/bower_components/bootstrap/dist/css/bootstrap.min.css"][/@cssImport]
+[#--
+[@cssImport path="/adminLTE/bower_components/bootstrap/dist/css/bootstrap.min.css"][/@cssImport]
+--]
 <!-- Font Awesome -->
-<link rel="stylesheet" href="${baseResourcePath}/adminLTE/bower_components/font-awesome/css/font-awesome.min.css">
+[@cssImport path="/adminLTE/bower_components/font-awesome/css/font-awesome.min.css"][/@cssImport]
 <!-- Ionicons -->
-<link rel="stylesheet" href="${baseResourcePath}/adminLTE/bower_components/Ionicons/css/ionicons.min.css">
+[@cssImport path="/adminLTE/bower_components/Ionicons/css/ionicons.min.css"][/@cssImport]
 <!-- Theme style -->
-<link rel="stylesheet" href="${baseResourcePath}/adminLTE/dist/css/AdminLTE.min.css">
+[@cssImport path="/adminLTE/dist/css/AdminLTE.min.css"][/@cssImport]
 <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
       page. However, you can choose any other skin. Make sure you
       apply the skin class to the body tag so the changes take effect. -->
-<link rel="stylesheet" href="${baseResourcePath}/adminLTE/dist/css/skins/skin-blue.min.css">
+[@cssImport path="/adminLTE/dist/css/skins/skin-blue.min.css"][/@cssImport]
 [#--动态标签页--]
-<script src="${baseResourcePath}/js/base/closable-tab-div.js"></script>
+[@jsImport path="/js/base/closable-tab-div.js"][/@jsImport]
 [#--<script src="https://cdn.bootcss.com/toastr.js/2.1.4/toastr.min.js"></script>--]
-<script src="${baseResourcePath}/js/base/toastr.min.js"></script>
+[@jsImport path="/js/base/toastr.min.js"][/@jsImport]
 [#--<link href="https://cdn.bootcss.com/toastr.js/2.1.4/toastr.min.css" rel="stylesheet">--]
-<link href="${baseResourcePath}/css/base/toastr.min.css" rel="stylesheet">
+[@cssImport path="/css/base/toastr.min.css"][/@cssImport]
 [#--<script src="https://cdn.bootcss.com/vue/2.5.13/vue.min.js"></script>--]
-<script src="${baseResourcePath}/js/base/vue.min.js"></script>
+[@jsImport path="/js/base/vue.min.js"][/@jsImport]
 [#--ladda按钮加载样式，api：http://www.htmleaf.com/jQuery/Buttons-Icons/201506232089.html--]
-<link rel="stylesheet" href="${baseResourcePath}/css/base/ladda-themeless.min.css">
+[@cssImport path="/css/base/ladda-themeless.min.css"][/@cssImport]
 [#--登录界面样式--]
-<link href="${baseResourcePath}/css/module/login/signin.css" rel="stylesheet">
-<script src="${baseResourcePath}/js/base/spin.min.js"></script>
-<script src="${baseResourcePath}/js/base/ladda.min.js"></script>
+[@cssImport path="/css/module/login/signin.css"][/@cssImport]
+[@jsImport path="/js/base/spin.min.js"][/@jsImport]
+[@jsImport path="/js/base/ladda.min.js"][/@jsImport]
 [#--自定义js--]
-<script src="${baseResourcePath}/js/base/main.js"></script>
+[@jsImport path="/js/base/main.js"][/@jsImport]
 
 
 <style type="text/css">
