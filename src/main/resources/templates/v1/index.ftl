@@ -11,31 +11,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 [#include "common/top.ftl"/]
 [#include "common/left.ftl"/]
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-    [#--<section class="content-header">
-        <h1>
-            欢迎来到sbs 中间件平台
-            <small>请在左侧菜单选取你想要查看的功能吧！</small>
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="${basePath}"><i class="fa fa-dashboard"></i>主页</a></li>
-            <li class="active">当前位置</li>
-        </ol>
-    </section>--]
-        <!-- 主要内容区域 -->
-        <section class="content container-fluid">
-            <div class="col-md-12">
-                <!-- 此处是相关代码 -->
-                <ul class="nav nav-tabs" role="tablist">
-                </ul>
-                <div class="tab-content" style="width:100%;">
-
-                </div>
-                <!-- 相关代码结束 -->
-            </div>
-        </section>
-        <!-- /.content -->
+    <div id="index_content_wrapper" class="content-wrapper">
+     [#--主要内容区域--]
     </div>
     <!-- /.content-wrapper -->
 
@@ -43,20 +20,59 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script type="text/javascript">
         //tab窗口
         $(function () {
-            var item = {'id': 'a', 'name': '首页', 'url': 'son.html', 'closable': false};
-            closableTab.addTab(item);
-
-            $(".sidebar-menu .show-tab").click(function () {
-                var id = $(this).attr("id");
-                var name = $(this).data("name");
-                var url = $(this).data("url");
-                //是否能关闭
-                var closable = $(this).data("closable");
-                var item = {'id': id, 'name': name, 'url': url, 'closable': closable == 1 ? true : false};
-                if ($("i[tabclose='tab_seed_" + id + "']").length > 0) {
-                    closableTab.closeTab($("i[tabclose='tab_seed_" + id + "']")[0]);
+            var initParam={
+                link : '.multitabs',                        //触发multitabs的selector text，注意需要有".","#"等
+                iframe : false,                             //iframe模式的总局设置。当值为false的时候，为智能模式，自动判断（内网用ajax，外网用iframe）。缺省为false。
+                class : '',                                 //主框架的class
+                init : [                                    //需要在初始加载的tab
+                    {
+                        type :'main',                           //标签页的类型，有 main | info，缺省为 info
+                        title : '[@spring.message code="index.main.title" /]',  //标题（可选），没有则显示网址
+                        //content: '',                        //html内容，如果设定此值，下面的URL设定则无效
+                        url : '${basePath}/homePage'  //链接
+                    }
+                ],
+                nav : {
+                    backgroundColor : '#f5f5f5',            //默认nav-bar 背景颜色
+                    class : '',                             //为nav添加class
+                    draggable : true,                       //nav tab 可拖动选项
+                    fixed : false,                          //固定标签头列表
+                    layout : 'default',                     //有两种模式，'default', 'classic'(所有隐藏tab都在下拉菜单里) 和 'simple'
+                    maxTabs : 5,                           //最多tab数量。（main和editor不计算在内) 当为1时，整个标签栏隐藏。main和editor分别只能有1个标签。
+                    maxTabTitleLength : 25,                 //tab标题的最大长度
+                    showCloseOnHover : true,                //当值为true，仅在鼠标悬浮时显示关闭按钮。false时一直显示
+                    style : 'nav-pills',                     //可以为nav-tabs 或 nav-pills
+                },
+                content : {
+                    ajax : {
+                        class : '',                         //为ajax tab-pane 添加class
+                        error : function (htmlCallBack) {
+                            toastr.error('[@spring.message code="index.main.load.error" /]');
+                            return htmlCallBack;
+                        },
+                        success : function (htmlCallBack) {
+                            //modify html and return
+                            return htmlCallBack;
+                        }
+                    },
+                    iframe : {
+                        class : ''                          //为iframe tab-pane 添加class
+                    }
+                },
+                language : {                                //语言配置
+                    nav : {
+                        title : '选项卡',                                  //默认的标签页名称
+                        dropdown : '<i class="fa fa-bars"></i>',        //标签栏的下拉菜单名称
+                        //下拉菜单的显示激活页面
+                        showActivedTab :'[@spring.message code="index.main.show.actived.tab"/]',
+                        //下拉菜单的关闭所有页面
+                        closeAllTabs :  '[@spring.message code="index.main.close.all.tabs"/]',
+                        //下拉菜单的关闭其他页面
+                        closeOtherTabs :'[@spring.message code="index.main.close.other.tabs"/]',
+                    }
                 }
-                closableTab.addTab(item);
-            });
+            }
+            //初始化选项卡
+            $('#index_content_wrapper').multitabs(initParam);
         });
     </script>

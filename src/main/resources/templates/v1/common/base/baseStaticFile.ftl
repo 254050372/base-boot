@@ -37,8 +37,10 @@
       page. However, you can choose any other skin. Make sure you
       apply the skin class to the body tag so the changes take effect. -->
 [@cssImport path="/adminLTE/dist/css/skins/skin-blue.min.css"][/@cssImport]
-[#--动态标签页--]
-[@jsImport path="/js/base/closable-tab-div.js"][/@jsImport]
+[#--动态标签页https://github.com/edwinhuish/bootstrap-multitabs--]
+[@cssImport path="/plugins/bootstrap-multitabs/css/style.css"][/@cssImport]
+[@jsImport path="/plugins/bootstrap-multitabs/js/multitabs.js"][/@jsImport]
+
 [#--<script src="https://cdn.bootcss.com/toastr.js/2.1.4/toastr.min.js"></script>--]
 [@jsImport path="/js/base/toastr.min.js"][/@jsImport]
 [#--<link href="https://cdn.bootcss.com/toastr.js/2.1.4/toastr.min.css" rel="stylesheet">--]

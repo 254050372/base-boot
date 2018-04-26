@@ -36,4 +36,10 @@ public class IndexController extends BaseController {
         return mv;
     }
 
+    @RequestMapping("/homePage")
+    public ModelAndView homePage(HttpServletRequest request) throws Exception{
+        ModelAndView mv = getMV("homePage");
+        return mv;
+    }
+
 }

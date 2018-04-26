@@ -33,10 +33,10 @@
             <li class="header">HEADER</li>
             <!-- Optionally, you can add icons to the links -->
             <li class="active">
-                <a class="show-tab" id="1" data-name="当前点击菜单" data-url="${basePath}/user/login" data-closable="1" href="javascript:void(0);">
+                <a class="show-tab multitabs"  href="${basePath}/login">
             <i class="fa fa-link"></i> <span>当前点击菜单</span></a></li>
             <li>
-                <a class="show-tab" id="2" data-name="Another Link" data-url="b.html" data-closable="1" href="javascript:void(0);">
+                <a class="show-tab multitabs"  href="b.html">
             <i class="fa fa-link"></i> <span>Another Link</span></a></li>
             <li class="treeview">
                 <a href="javascript:void(0);">
@@ -47,8 +47,8 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a id="3" class="show-tab" data-name="菜单1" data-url="c.html" data-closable="1" href="javascript:void(0);">菜单1</a></li>
-                    <li><a id="4" class="show-tab" data-name="菜单2" data-url="d.html" data-closable="1" href="javascript:void(0);">菜单2</a></li>
+                    <li><a id="3" class="show-tab multitabs"  href="c.html">菜单1</a></li>
+                    <li><a id="4" class="show-tab multitabs"  href="d.html">菜单2</a></li>
                 </ul>
             </li>
         </ul>

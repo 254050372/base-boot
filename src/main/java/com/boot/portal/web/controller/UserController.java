@@ -5,6 +5,7 @@ package com.boot.portal.web.controller;/**
 
 import com.boot.portal.core.controller.BaseController;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * 用户入口
@@ -17,4 +18,9 @@ import org.springframework.web.bind.annotation.*;
 public class UserController extends BaseController {
 
 
+    @GetMapping(value = "/userList")
+    public ModelAndView userList() throws Exception {
+        ModelAndView mv = getMV("/module/user/userList");
+        return mv;
+    }
 }

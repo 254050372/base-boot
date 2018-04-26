@@ -13,12 +13,11 @@
             <input type="password" name="password" id="password" class="form-control t-show" placeholder="[@spring.message code="login.password" /]"/>
             <button class="btn btn-lg btn-warning btn-block ladda-button" data-style="zoom-out"  type="submit" id="submit">[@spring.message code="login.login" /]</button>
             <label class="checkbox">
-                <!--<input type="checkbox" value="remember-me"> 记住我-->
+                [#--<input type="checkbox" value="remember-me"> 记住我--]
             </label>
         </form>
         <div class="form-signin">[@spring.message code="login.copy.right" /]</div>
     </div>
-<#--<alert-msg></alert-msg>-->
 </div>
 </body>
 </html>
