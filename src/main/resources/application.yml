@@ -29,6 +29,8 @@ spring:
       #国际化文件夹
       basename: /i18n/messages
       always-use-message-format: true
+      #60秒国际化资源缓存过期
+      cache-duration: 60
 ##内置tomcat启动服务器端口
 server:
   port: 8087

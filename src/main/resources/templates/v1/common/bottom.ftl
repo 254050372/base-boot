@@ -1,3 +1,4 @@
+[#import "/spring.ftl" as spring/]
 <!-- Main Footer -->
 <footer class="main-footer">
     <!-- To the right -->
@@ -5,7 +6,8 @@
         Anything you want
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2017 <a href="//www.sbszipper.com/" target="view_window">浔兴拉链股份有限公司</a>.</strong> 版权所有.
+    [#--<strong>Copyright &copy; 2017 <a href="//www.sbszipper.com/" target="view_window">浔兴拉链股份有限公司</a>.</strong> 版权所有.--]
+    <strong>[@spring.message code="login.copy.right" /]</strong>.
 </footer>
 
 <!-- Control Sidebar -->

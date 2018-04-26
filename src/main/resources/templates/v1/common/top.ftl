@@ -5,7 +5,7 @@
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>SBS</b></span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>SBS</b>中间件平台</span>
+        <span class="logo-lg"><b>个人</b>中间件平台</span>
     </a>
 
     <!-- Header Navbar -->
